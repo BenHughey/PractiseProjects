@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="mystyles.css"/>
+        <title>Demo HTML5</title>
+    </head>
+    <body>
+        <p>Hello</p>
+        <form id="myform">
+        <label for="date-input">Please choose a date:</label>
+        <input type="date" id="date-input">
+        <label for="time-input">Please enter a time:</label>
+        <input type="time" id="time-input">
+        <label for="month-input">Please select a month:</label>
+        <input type="month" id="month-input"/>
+        <label for="week-input">Please select a week</label>
+        <input type="week" id="week-input"/>
+        <label for="range-data">Range:</label>
+        <input type="range" id="range-data" min="1" max="10"/>
+        <label for="search-data">Search:</label>
+        <input type="search" id="search-data" placeholder="Enter search term"/>
+        <label for="tel-data">Telephone:</label>
+        <input type="tel" id="tel-data" required/>
+        <label for="email-data">Please enter email address(es):</label>
+        <input type="email" id="email-data" required multiple/>
+        <input type="submit" value="Submit"/>
+        <label for="color-data">Color:</label>
+        <input type="color" id="color-data"/>
+        <label for="myDataList">Select title:</label>
+        <input type="text" list="myDataList"/>
+        <datalist id="myDataList">
+            <option label="Mr." value="Mr."></option>
+            <option label="Mrs." value="Mrs."></option>
+            <option label="Ms." value="Ms."></option>    
+        </datalist>
+        <progress value="5" max="15"></progress>
+        <label for="meter-data">Meter:</label>
+        <meter id="meter-data" min="10" max="100" value="50" low="20" high="70" optimum="50"></meter>
+
+
+        </form>
+    </body>
+</html>

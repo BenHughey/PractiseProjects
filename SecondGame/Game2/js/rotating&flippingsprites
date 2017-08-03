@@ -1,0 +1,84 @@
+//creates new instance of phaser.game object and sets dimensions
+var game = new Phaser.Game(640, 360, Phaser.AUTO);
+//Phaser.AUTO means phaser will try to use webgl for rendering but if not available will fall back to canvas
+
+//game state, States are a javascript object
+var GameState = {
+    //method where all game files are loaded
+    preload: function(){
+        //loads background image to gamestate load is a phaser object
+        this.load.image("background","assets/images/background.png"); //(image reference key to be used, filepath)
+        //loads chicken image
+        this.load.image("chicken","assets/images/chicken.png");
+        //loads horse image
+        this.load.image("horse","assets/images/horse.png");
+        //loads pig image
+        this.load.image("pig","assets/images/pig.png");
+        //loads sheep image
+        this.load.image("sheep","assets/images/sheep3.png");
+        
+    },
+    
+    create: function(){
+        //sets scale mode to take up the largest window space while maintaining the aspect ratio
+        this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+        
+        //centers the game
+        this.scale.pageAlignHorizontally = true;
+        this.scale.pageAlignVertically = true;
+        
+        
+        //creates background sprite and adds it to the Gamestate Object so it can be referred to in other methods
+        this.background = this.game.add.sprite(0,0,'background')//(coordinates for top left of image, image key)
+        
+        //adds chicken sprite to centre of game world
+        this.chicken = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, "chicken");
+        
+        //changes chickens anchor point to be middle of image instead of top right
+        this.chicken.anchor.setTo(0.5, 0.5); //(half of x axis, half of y axis)
+        
+        //changes size of chicken sprite
+        this.chicken.scale.setTo(2,1);
+        
+        //creates horse sprite
+        this.horse = this.game.add.sprite(120, 10, "horse");
+        
+        //creates pig sprite
+        this.pig = this.game.add.sprite(500,300, "pig");
+        //sets pig anchor point to center of image
+        this.pig.anchor.setTo(0.5);
+        
+        //flips pig sprite to face opposite way horizontally
+        this.pig.scale.setTo(-1, 1);
+        
+        //creates sheep sprite
+        this.sheep = this.game.add.sprite(100, 250, "sheep");
+        //halves size of sheep
+        this.sheep.scale.setTo(0.5);
+        
+        //sets anchor point of sheep to center
+        this.sheep.anchor.setTo(0.5);
+        
+        //rotates sheep 45 degrees counter clockwise
+        this.sheep.angle = -45;
+        
+    
+        
+        
+        
+        
+        
+    },
+    //executed multiple times per second
+    //collision detection etc
+    update: function(){
+       //will rotate sheep 0.5 degrees every update 
+        this.sheep.angle +=0.5;
+    },
+        
+};
+//adds GameState variable as a new gamestate called GameState
+game.state.add('GameState', GameState);
+    
+//launches game
+game.state.start("GameState");

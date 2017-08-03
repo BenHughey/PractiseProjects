@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>First Game</title>
+	</head>
+
+	<body>
+	
+	<canvas id="my_canvas"></canvas>
+	
+	</body>
+	
+	<script>
+	
+		var canvas = null;
+		var context = null;
+		
+		setup = function() {
+		canvas = document.getElementById("my_canvas");
+		context = canvas.getContext('2d');
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
+		
+		
+		//loads image but doesn't draw it
+		img = new Image();
+		//specifies function to run when image loads
+		img.onload = onImageLoad;
+		img src = "ralphyrobot.png";
+		};
+		
+		//function that runs when image loads
+		onImageLoad = function(){
+			console.log("Image!!");
+			
+			//draws image to the canvas at locations 192 x and 192 y 
+			context.drawImage(img, 192, 192);
+			
+			
+			};
+		
+		setup();
+	</script>
+</html>

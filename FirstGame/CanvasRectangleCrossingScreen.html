@@ -1,0 +1,74 @@
+<!Doctype html>
+	<html>
+	<head>
+		<title>Canvas</title>
+		<style>
+		canvas {border: 1px solid black;}
+		</style>
+	</head>
+	<body>
+		<h1>Canvas</h1>
+		<canvas width ="300" height="500" id="mycanvas"></canvas>
+		<script>
+			
+			//initial position
+			var x = 10;
+			var y = 10;
+			
+			//rectangle dimensions
+			var w = 20;
+			var h = 30;
+			
+			//speed at which it moves
+			var speed = 2;
+			
+			//grabs canvas and context
+			var canvas = document.getElementById("mycanvas");
+			var ctx = canvas.getContext("2d");
+			
+			//increments x by value of speed each time it's called;
+			var update = function(){
+			
+				//makes rectangle start moving back when x reaches 270
+				if (x >= 270){
+					x = 270;
+					speed = -speed;
+				}
+				
+				//makes rectangle start moving forward when it gets back to 10
+				else if(x <=10){
+					x = 10;
+					speed = -speed;
+					} 
+				x = x + speed;
+				};
+				
+				
+			//clears canvas then re draws a rectangle using the x,y,w,h variables
+			var draw = function(){
+				ctx.clearRect(0,0,500,300);
+				ctx.fillStyle = "rgb(200, 0, 100)";
+				ctx.fillRect(x, y, w, h);
+				};	
+			
+			//uses the update and draw functions to move the rectangle across the screen
+			//gets executed multiple times per second
+			var step = function(){
+			
+				update();
+				draw();
+				window.requestAnimationFrame(step);
+				};
+				
+				//initial kick
+				step();
+			
+			
+			
+		
+		</script>
+	
+	
+
+	</body>
+</html>

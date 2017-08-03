@@ -1,0 +1,116 @@
+<!Doctype html>
+	<html>
+	<head>
+		<title>Canvas</title>
+		<style>
+		canvas {border: 1px solid black;}
+		</style>
+	</head>
+	<body>
+		<h1>Canvas</h1>
+		<canvas width ="640" height="360" id="mycanvas"></canvas>
+		<script>
+		
+		
+			//constants
+			var GAME_WIDTH = 640;
+			var GAME_HEIGHT = 360;
+			
+			//enemies
+			var enemies = [
+				{
+					x: 100, //x coordinate	
+					y: 100, //y coordinate
+					speedY: 1, // speed in Y
+					w: 40, //width
+					h: 40 //height
+				},
+				{
+					x: 260,
+					y: 100,
+					speedY: 2,
+					w: 40,
+					h: 40
+				},
+				{
+					x: 380,
+					y: 100,
+					speedY: 3,
+					w: 40,
+					h: 40
+				},
+				{
+					x: 450,
+					y: 100,
+					speedY: 7,
+					w: 40,
+					h: 40
+				},
+			];
+				
+			
+		
+			//grabs canvas and context
+			var canvas = document.getElementById("mycanvas");
+			var ctx = canvas.getContext("2d");
+			
+			//colour zones
+			var blueZone, greenZone;
+			
+			//increments x by value of speed each time it's called;
+			var update = function(){
+			
+				//update the position of each enemy
+				var j = 0;
+				var n = enemies.length;
+				
+				//loops through objects in enemies list and moves them
+				while(j < n ){
+				
+					enemies[j].y += enemies[j].speedY;
+					j++;
+				
+				}
+			
+			};
+				
+				
+			//Show the game on the screen
+			var draw = function(){
+				ctx.clearRect(0,0, GAME_WIDTH, GAME_HEIGHT);
+				ctx.fillStyle = "#3333FF"; 
+				
+				//draw each enemy
+				var j = 0;
+				var n = enemies.length;
+				
+				while( j < n ){
+					ctx.fillRect(enemies[j].x, enemies[j].y, enemies[j].w, enemies[j].h);
+					
+					j++;
+				
+				}
+				
+			};	
+			
+			//uses the update and draw functions to move the rectangle across the screen
+			//gets executed multiple times per second
+			var step = function(){
+			
+				update();
+				draw();
+				window.requestAnimationFrame(step);
+				};
+				
+				//initial kick
+				step();
+			
+			
+			
+		
+		</script>
+	
+	
+
+	</body>
+</html>
