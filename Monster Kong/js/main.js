@@ -218,7 +218,7 @@ var GameState = {
         this.rightArrow.alpha = 0.5;
         this.actionButton.alpha = 0.5;
         
-        //stops on screen buttons from moving with camera
+        //allows on screen buttons to move with camera
         this.leftArrow.fixedToCamera = true;
         this.rightArrow.fixedToCamera = true;
         this.actionButton.fixedToCamera = true;
